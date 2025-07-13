@@ -1,4 +1,51 @@
-# Agents Workspace - Monorepo
+# Agents Workspace - Sistema de Q&A com IA
+
+## 🤖 Sobre o Projeto
+
+O **Agents Workspace** é um sistema inteligente de perguntas e respostas que utiliza inteligência artificial para processar áudio e gerar respostas baseadas em contexto. O sistema permite criar salas de conversa onde usuários podem:
+
+### 🎯 Funcionalidades Principais
+
+#### 🏠 **Gerenciamento de Salas**
+
+- Criar salas temáticas com nome e descrição
+- Listar todas as salas disponíveis
+- Navegar entre diferentes salas de conversa
+
+#### 🎙️ **Gravação e Transcrição de Áudio**
+
+- Gravar áudio diretamente no navegador
+- Transcrição automática usando **Google Gemini AI**
+- Processamento de chunks de áudio para melhor performance
+- Suporte a diferentes formatos de áudio
+
+#### 🧠 **Busca Semântica Inteligente**
+
+- Geração de embeddings vetoriais para cada transcrição
+- Busca semântica avançada usando PostgreSQL + pgvector
+- Respostas contextualizadas baseadas no histórico de áudio
+
+#### ❓ **Sistema de Perguntas e Respostas**
+
+- Fazer perguntas sobre qualquer conteúdo gravado
+- Respostas automáticas geradas pela IA
+- Histórico completo de perguntas e respostas por sala
+- Interface intuitiva para interação
+
+### 🚀 **Como Funciona**
+
+1. **Criação de Sala**: Usuário cria uma sala com nome e descrição
+2. **Gravação de Áudio**: Grava áudio sobre qualquer tópico relevante
+3. **Processamento IA**: Sistema transcreve o áudio e gera embeddings
+4. **Perguntas**: Usuário pode fazer perguntas sobre o conteúdo gravado
+5. **Respostas Inteligentes**: IA analisa o contexto e gera respostas precisas
+
+### 🎨 **Interface Moderna**
+
+- Design responsivo e intuitivo
+- Componentes reutilizáveis com Shadcn/ui
+- Tema escuro elegante
+- Experiência de usuário fluida
 
 Este é um monorepo NX que contém os projetos **web** e **server** para o sistema de agentes NLW, junto com bibliotecas compartilhadas.
 
