@@ -1,0 +1,17 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --experimental-strip-types --no-warnings --env-file=.env src/server.ts",
+    "dev": "nx dev server",
+    "build": "nx build server",
+    "serve": "nx serve server",
+    "db:generate": "nx db:generate server",
+    "db:migrate": "nx db:migrate server",
+    "db:studio": "nx db:studio server",
+    "db:seed": "nx db:seed server",
+    "lint": "nx lint server"
+  }
+} 

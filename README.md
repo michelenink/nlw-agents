@@ -1,96 +1,204 @@
-# AgentsWorkspace
+# Agents Workspace - Monorepo
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+Este é um monorepo NX que contém os projetos **web** e **server** para o sistema de agentes NLW, junto com bibliotecas compartilhadas.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+![React](https://img.shields.io/badge/React-19-61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
+![Node.js](https://img.shields.io/badge/Node.js-18+-339933)
+![Fastify](https://img.shields.io/badge/Fastify-Framework-000000)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-336791)
+![Drizzle ORM](https://img.shields.io/badge/Drizzle-ORM-C5F74F)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-UI-38B2AC)
+![Vite](https://img.shields.io/badge/Vite-Build%20Tool-646CFF)
+![NX](https://img.shields.io/badge/NX-Monorepo-143055)
+![Docker](https://img.shields.io/badge/Docker-Container-2496ED)
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+## 🏗️ Estrutura do Projeto
 
-## Run tasks
-
-To run tasks with Nx use:
-
-```sh
-npx nx <target> <project-name>
+```
+agents/
+├── apps/
+│   ├── web/                    # Aplicação React + Vite
+│   │   ├── src/
+│   │   ├── index.html
+│   │   ├── vite.config.ts
+│   │   └── project.json
+│   └── server/                 # API Node.js + Fastify
+│       ├── src/
+│       ├── docker/
+│       ├── docker-compose.yml
+│       ├── drizzle.config.ts
+│       └── project.json
+├── libs/
+│   └── shared/
+│       └── types/              # Tipos TypeScript compartilhados
+│           ├── src/
+│           └── project.json
+├── nx.json                     # Configuração do NX
+├── tsconfig.base.json          # Configuração base do TypeScript
+└── package.json                # Dependências do workspace
 ```
 
-For example:
+## 🚀 Comandos Disponíveis
 
-```sh
-npx nx build myproject
+### Desenvolvimento
+
+```bash
+# Executar app web em modo desenvolvimento
+npm run dev:web
+
+# Executar servidor em modo desenvolvimento
+npm run dev:server
+
+# Executar ambos (use terminais separados)
+npm run dev:web & npm run dev:server
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+### Build
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+```bash
+# Build do app web
+npm run build:web
 
-## Add new projects
+# Build do servidor
+npm run build:server
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-To install a new plugin you can use the `nx add` command. Here's an example of adding the React plugin:
-```sh
-npx nx add @nx/react
+# Build de todos os projetos
+npm run build:all
 ```
 
-Use the plugin's generator to create new projects. For example, to create a new React app or library:
+### Banco de Dados
 
-```sh
-# Generate an app
-npx nx g @nx/react:app demo
+```bash
+# Gerar migrações
+npm run db:generate
 
-# Generate a library
-npx nx g @nx/react:lib some-lib
+# Executar migrações
+npm run db:migrate
+
+# Abrir Drizzle Studio
+npm run db:studio
+
+# Executar seed do banco
+npm run db:seed
 ```
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+### Linting
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+```bash
+# Executar lint em todos os projetos
+npm run lint:all
 
-## Set up CI!
-
-### Step 1
-
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
+# Executar lint em projeto específico
+nx lint web
+nx lint server
 ```
 
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
+## 🛠️ Tecnologias Utilizadas
 
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Frontend (Web)
 
-### Step 2
+- **React 19** - Biblioteca para interfaces
+- **Vite** - Build tool e dev server
+- **TypeScript** - Linguagem principal
+- **Tailwind CSS** - Framework CSS
+- **Shadcn/ui** - Componentes UI
+- **React Hook Form** - Gerenciamento de formulários
+- **React Query** - Gerenciamento de estado servidor
+- **React Router DOM** - Roteamento
+- **Zod** - Validação de esquemas
 
-Use the following command to configure a CI workflow for your workspace:
+### Backend (Server)
 
-```sh
-npx nx g ci-workflow
+- **Node.js** - Runtime JavaScript
+- **Fastify** - Framework web
+- **TypeScript** - Linguagem principal
+- **PostgreSQL** - Banco de dados
+- **Drizzle ORM** - ORM TypeScript
+- **Google GenAI** - Integração com IA
+- **Zod** - Validação de esquemas
+
+### Desenvolvimento
+
+- **NX** - Monorepo tooling
+- **Biome** - Linter e formatter
+- **Docker** - Containerização
+- **Docker Compose** - Orquestração de containers
+
+## 📂 Bibliotecas Compartilhadas
+
+### @agents-workspace/shared-types
+
+Contém todos os tipos TypeScript compartilhados entre o frontend e backend:
+
+- Request/Response types
+- Modelos de dados
+- Interfaces comuns
+
+## 🔧 Configuração do Ambiente
+
+### Pré-requisitos
+
+- Node.js 18+
+- npm
+- Docker e Docker Compose
+
+### Instalação
+
+```bash
+# Instalar dependências
+npm install --legacy-peer-deps
+
+# Configurar banco de dados
+cd apps/server
+cp .env.example .env
+# Editar variáveis de ambiente conforme necessário
+
+# Subir banco de dados
+docker-compose up -d
+
+# Executar migrações
+npm run db:migrate
+
+# Opcional: executar seed
+npm run db:seed
 ```
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## 📋 Scripts de Desenvolvimento
 
-## Install Nx Console
+### Para o Frontend
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+```bash
+# Dentro da pasta apps/web
+npm run dev    # Inicia servidor de desenvolvimento
+npm run build  # Build para produção
+npm run lint   # Executa linting
+```
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Para o Backend
 
-## Useful links
+```bash
+# Dentro da pasta apps/server
+npm run dev    # Inicia servidor com watch
+npm run build  # Build para produção
+npm run start  # Inicia servidor em produção
+```
 
-Learn more:
+## 🏛️ Arquitetura
 
-- [Learn more about this workspace setup](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Benefícios do Monorepo
 
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- **Compartilhamento de código** - Tipos e utilitários compartilhados
+- **Desenvolvimento simplificado** - Um único repositório para ambos os projetos
+- **Dependências centralizadas** - Gerenciamento unificado de dependências
+- **Build otimizado** - Cache inteligente do NX
+- **Desenvolvimento paralelo** - Múltiplos projetos no mesmo workspace
+
+### Princípios Arquiteturais
+
+- **Separação de responsabilidades** - Apps independentes com libs compartilhadas
+- **Type safety** - TypeScript end-to-end
+- **Clean Code** - Código limpo e bem documentado
+- **DRY** - Reutilização de código através de libs compartilhadas
+
+[Visite meu linkedin](https://www.linkedin.com/in/michelenink/)
