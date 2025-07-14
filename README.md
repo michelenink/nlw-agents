@@ -4,48 +4,33 @@
 
 O **Agents Workspace** é um sistema inteligente de perguntas e respostas que utiliza inteligência artificial para processar áudio e gerar respostas baseadas em contexto. O sistema permite criar salas de conversa onde usuários podem:
 
-### 🎯 Funcionalidades Principais
+### Funcionalidades Principais
 
-#### 🏠 **Gerenciamento de Salas**
+#### **Gerenciamento de Salas**
 
 - Criar salas temáticas com nome e descrição
 - Listar todas as salas disponíveis
 - Navegar entre diferentes salas de conversa
 
-#### 🎙️ **Gravação e Transcrição de Áudio**
+#### **Gravação e Transcrição de Áudio**
 
 - Gravar áudio diretamente no navegador
 - Transcrição automática usando **Google Gemini AI**
 - Processamento de chunks de áudio para melhor performance
 - Suporte a diferentes formatos de áudio
 
-#### 🧠 **Busca Semântica Inteligente**
+#### **Busca Semântica Inteligente**
 
 - Geração de embeddings vetoriais para cada transcrição
 - Busca semântica avançada usando PostgreSQL + pgvector
 - Respostas contextualizadas baseadas no histórico de áudio
 
-#### ❓ **Sistema de Perguntas e Respostas**
+#### **Sistema de Perguntas e Respostas**
 
 - Fazer perguntas sobre qualquer conteúdo gravado
 - Respostas automáticas geradas pela IA
 - Histórico completo de perguntas e respostas por sala
 - Interface intuitiva para interação
-
-### 🚀 **Como Funciona**
-
-1. **Criação de Sala**: Usuário cria uma sala com nome e descrição
-2. **Gravação de Áudio**: Grava áudio sobre qualquer tópico relevante
-3. **Processamento IA**: Sistema transcreve o áudio e gera embeddings
-4. **Perguntas**: Usuário pode fazer perguntas sobre o conteúdo gravado
-5. **Respostas Inteligentes**: IA analisa o contexto e gera respostas precisas
-
-### 🎨 **Interface Moderna**
-
-- Design responsivo e intuitivo
-- Componentes reutilizáveis com Shadcn/ui
-- Tema escuro elegante
-- Experiência de usuário fluida
 
 Este é um monorepo NX que contém os projetos **web** e **server** para o sistema de agentes NLW, junto com bibliotecas compartilhadas.
 
@@ -60,7 +45,7 @@ Este é um monorepo NX que contém os projetos **web** e **server** para o siste
 ![NX](https://img.shields.io/badge/NX-Monorepo-143055)
 ![Docker](https://img.shields.io/badge/Docker-Container-2496ED)
 
-## 🏗️ Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 agents/
@@ -84,61 +69,6 @@ agents/
 ├── nx.json                     # Configuração do NX
 ├── tsconfig.base.json          # Configuração base do TypeScript
 └── package.json                # Dependências do workspace
-```
-
-## 🚀 Comandos Disponíveis
-
-### Desenvolvimento
-
-```bash
-# Executar app web em modo desenvolvimento
-npm run dev:web
-
-# Executar servidor em modo desenvolvimento
-npm run dev:server
-
-# Executar ambos (use terminais separados)
-npm run dev:web & npm run dev:server
-```
-
-### Build
-
-```bash
-# Build do app web
-npm run build:web
-
-# Build do servidor
-npm run build:server
-
-# Build de todos os projetos
-npm run build:all
-```
-
-### Banco de Dados
-
-```bash
-# Gerar migrações
-npm run db:generate
-
-# Executar migrações
-npm run db:migrate
-
-# Abrir Drizzle Studio
-npm run db:studio
-
-# Executar seed do banco
-npm run db:seed
-```
-
-### Linting
-
-```bash
-# Executar lint em todos os projetos
-npm run lint:all
-
-# Executar lint em projeto específico
-nx lint web
-nx lint server
 ```
 
 ## 🛠️ Tecnologias Utilizadas
@@ -184,15 +114,9 @@ Contém todos os tipos TypeScript compartilhados entre o frontend e backend:
 
 ## 🔧 Configuração do Ambiente
 
-### Pré-requisitos
-
-- Node.js 18+
-- npm
-- Docker e Docker Compose
-
 ### Instalação
 
-```bash
+````bash
 # Instalar dependências
 npm install --legacy-peer-deps
 
@@ -204,31 +128,57 @@ cp .env.example .env
 # Subir banco de dados
 docker-compose up -d
 
+### Desenvolvimento
+
+```bash
+# Executar app web em modo desenvolvimento
+npm run dev:web
+
+# Executar servidor em modo desenvolvimento
+npm run dev:server
+
+# Executar ambos (use terminais separados)
+npm run dev:web & npm run dev:server
+````
+
+### Build
+
+```bash
+# Build do app web
+npm run build:web
+
+# Build do servidor
+npm run build:server
+
+# Build de todos os projetos
+npm run build:all
+```
+
+### Banco de Dados
+
+```bash
+# Gerar migrações
+npm run db:generate
+
 # Executar migrações
 npm run db:migrate
 
-# Opcional: executar seed
+# Abrir Drizzle Studio
+npm run db:studio
+
+# Executar seed do banco
 npm run db:seed
 ```
 
-## 📋 Scripts de Desenvolvimento
-
-### Para o Frontend
+### Linting
 
 ```bash
-# Dentro da pasta apps/web
-npm run dev    # Inicia servidor de desenvolvimento
-npm run build  # Build para produção
-npm run lint   # Executa linting
-```
+# Executar lint em todos os projetos
+npm run lint:all
 
-### Para o Backend
-
-```bash
-# Dentro da pasta apps/server
-npm run dev    # Inicia servidor com watch
-npm run build  # Build para produção
-npm run start  # Inicia servidor em produção
+# Executar lint em projeto específico
+nx lint web
+nx lint server
 ```
 
 ## 🏛️ Arquitetura
@@ -240,12 +190,5 @@ npm run start  # Inicia servidor em produção
 - **Dependências centralizadas** - Gerenciamento unificado de dependências
 - **Build otimizado** - Cache inteligente do NX
 - **Desenvolvimento paralelo** - Múltiplos projetos no mesmo workspace
-
-### Princípios Arquiteturais
-
-- **Separação de responsabilidades** - Apps independentes com libs compartilhadas
-- **Type safety** - TypeScript end-to-end
-- **Clean Code** - Código limpo e bem documentado
-- **DRY** - Reutilização de código através de libs compartilhadas
 
 [Visite meu linkedin](https://www.linkedin.com/in/michelenink/)
