@@ -14,13 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {
-      "@agents-workspace/shared-types": ["libs/shared/types/src/index.ts"],
-      "@agents/api-contracts": ["libs/api-contracts/src/index.ts"],
-      "@agents/ui": ["libs/ui/src/index.ts"],
-      "@agents/data-access": ["libs/data-access/src/index.ts"],
-      "@agents/utils": ["libs/utils/src/index.ts"]
-    }
+      "paths": {
+    "@agents-workspace/shared-types": ["libs/shared/types/src/index.ts"],
+    "@agents/api-contracts": ["libs/api-contracts/src/index.ts"]
+  }
   },
   "exclude": ["node_modules", "tmp"]
 } 

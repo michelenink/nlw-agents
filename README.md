@@ -2,35 +2,22 @@
 
 ## 🤖 Sobre o Projeto
 
-O **Agents Workspace** é um sistema inteligente de perguntas e respostas que utiliza inteligência artificial para processar áudio e gerar respostas baseadas em contexto. O sistema permite criar salas de conversa onde usuários podem:
+O **Agents Workspace** é um sistema inteligente de perguntas e respostas que combina **Google Gemini AI** com busca semântica avançada para criar uma experiência única de Q&A baseada em contexto de áudio.
 
-### Funcionalidades Principais
+### Como Funciona
 
-#### **Gerenciamento de Salas**
+O sistema opera em um fluxo inteligente de **3 etapas principais**:
 
-- Criar salas temáticas com nome e descrição
-- Listar todas as salas disponíveis
-- Navegar entre diferentes salas de conversa
+1. **Captura e Transcrição**: Áudio gravado é processado em chunks e transcrito usando **Google Gemini AI**
+2. **Processamento Semântico**: Transcrições são convertidas em embeddings vetoriais e armazenadas no **PostgreSQL com pgvector**
+3. **Respostas Contextualizadas**: Perguntas são processadas com busca semântica no histórico e **Google Gemini** gera respostas precisas baseadas no contexto encontrado
 
-#### **Gravação e Transcrição de Áudio**
+### Diferenciais Técnicos
 
-- Gravar áudio diretamente no navegador
-- Transcrição automática usando **Google Gemini AI**
-- Processamento de chunks de áudio para melhor performance
-- Suporte a diferentes formatos de áudio
-
-#### **Busca Semântica Inteligente**
-
-- Geração de embeddings vetoriais para cada transcrição
-- Busca semântica avançada usando PostgreSQL + pgvector
-- Respostas contextualizadas baseadas no histórico de áudio
-
-#### **Sistema de Perguntas e Respostas**
-
-- Fazer perguntas sobre qualquer conteúdo gravado
-- Respostas automáticas geradas pela IA
-- Histórico completo de perguntas e respostas por sala
-- Interface intuitiva para interação
+- **IA Generativa**: Integração nativa com **Google Gemini** para transcrição e geração de respostas
+- **Busca Semântica**: Usa embeddings vetoriais para encontrar contexto relevante, não apenas palavras-chave
+- **Processamento em Tempo Real**: Chunks de áudio processados incrementalmente para melhor performance
+- **Contexto Inteligente**: Respostas geradas considerando todo o histórico de áudio da sala
 
 Este é um monorepo NX que contém os projetos **web** e **server** para o sistema de agentes NLW, junto com bibliotecas compartilhadas.
 
@@ -180,15 +167,5 @@ npm run lint:all
 nx lint web
 nx lint server
 ```
-
-## 🏛️ Arquitetura
-
-### Benefícios do Monorepo
-
-- **Compartilhamento de código** - Tipos e utilitários compartilhados
-- **Desenvolvimento simplificado** - Um único repositório para ambos os projetos
-- **Dependências centralizadas** - Gerenciamento unificado de dependências
-- **Build otimizado** - Cache inteligente do NX
-- **Desenvolvimento paralelo** - Múltiplos projetos no mesmo workspace
 
 [Visite meu linkedin](https://www.linkedin.com/in/michelenink/)
